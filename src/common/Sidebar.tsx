@@ -26,7 +26,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export const Sidebar: React.FC = () => {
-  const { drawerWidth, isDrawerOpen } = useAppContext();
+  const { drawerWidth, isDrawerOpen, toggleDrawerOpen } = useAppContext();
   const theme = useTheme();
 
   return (
@@ -44,7 +44,7 @@ export const Sidebar: React.FC = () => {
       open={isDrawerOpen}
     >
       <DrawerHeader>
-        <IconButton>
+        <IconButton onClick={toggleDrawerOpen}>
           {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
         </IconButton>
       </DrawerHeader>

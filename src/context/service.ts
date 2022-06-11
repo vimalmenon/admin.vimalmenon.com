@@ -5,6 +5,7 @@ import { IAppContext } from './context';
 export const initialValue: IAppContext = {
   drawerWidth: 240,
   isDrawerOpen: false,
+  toggleDrawerOpen: () => false,
 };
 
 export const AppContextService = React.createContext<IAppContext>(initialValue);
