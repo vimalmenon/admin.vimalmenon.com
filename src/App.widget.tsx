@@ -1,15 +1,11 @@
 import * as React from 'react';
 
-import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider } from '@mui/material/styles';
-
-import { theme } from './theme';
+import { Box } from '@mui/material';
 
 export const App: React.FC = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <Box component="main" sx={{ width: '100%', flexGrow: 1, p: { xs: 2, sm: 3 } }}>
       <div>This is App</div>
-    </ThemeProvider>
+    </Box>
   );
 };
