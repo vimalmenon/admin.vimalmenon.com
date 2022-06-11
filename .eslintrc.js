@@ -5,7 +5,12 @@ module.exports = {
       es6: true,
     },
     parserOptions: { ecmaVersion: 8 }, // to enable features such as async/await
-    ignorePatterns: ['node_modules/*', '.next/*', '/pages/api/**/*.ts', 'out/*', '!.prettierrc.js', 'jest.setup.js'], // We don't want to lint generated files nor node_modules, but we want to lint .prettierrc.js (ignored by default by eslint)
+    ignorePatterns: [
+      'node_modules/*',
+      'public/*',
+      '!.prettierrc.js',
+      'jest.setup.js',
+    ], // We don't want to lint generated files nor node_modules, but we want to lint .prettierrc.js (ignored by default by eslint)
     extends: ['eslint:recommended'],
     overrides: [
       // This configuration will apply only to TypeScript files
@@ -26,7 +31,7 @@ module.exports = {
           'plugin:jsx-a11y/recommended', // Accessibility rules
           'plugin:prettier/recommended',
         ],
-        "plugins": ["simple-import-sort", "import"],
+        plugins: ['simple-import-sort', 'import'],
         rules: {
           // We will use TypeScript's types for component props instead
           'react/prop-types': 'off',
@@ -36,13 +41,13 @@ module.exports = {
   
           // This rule is not compatible with Next.js's <Link /> components
           'jsx-a11y/anchor-is-valid': 'off',
-          "react-hooks/exhaustive-deps": "off",
+          'react-hooks/exhaustive-deps': 'off',
           // Why would you want unused vars?
           '@typescript-eslint/no-unused-vars': ['error'],
   
           'prettier/prettier': ['error', {}, { usePrettierrc: true }],
-          'jsx-a11y/no-onchange': 0, 
-          'no-console': ["error", { allow: ["warn", "error"] }],
+          'jsx-a11y/no-onchange': 0,
+          'no-console': ['error', { allow: ['warn', 'error'] }],
           // I suggest this setting for requiring return types on functions only where useful
           '@typescript-eslint/explicit-function-return-type': [
             'warn',
@@ -51,19 +56,26 @@ module.exports = {
               allowConciseArrowFunctionExpressionsStartingWithVoid: true,
             },
           ],
-          "simple-import-sort/imports": "error",
-          "simple-import-sort/exports": "error",
-          "import/first": "error",
-          "import/newline-after-import": "error",
-          "import/no-duplicates": "error",
-          // "sort-imports": ["error", {
-          //   "ignoreCase": false,
-          //   "ignoreDeclarationSort": false,
-          //   "ignoreMemberSort": false,
-          //   "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
-          //   "allowSeparatedGroups": false
-          // }]
+          'import/order': [
+            'error',
+            {
+              groups: ['builtin', 'external', 'internal'],
+              pathGroups: [
+                {
+                  pattern: 'react',
+                  group: 'external',
+                  position: 'before',
+                },
+              ],
+              pathGroupsExcludedImportTypes: ['react'],
+              'newlines-between': 'always',
+              alphabetize: {
+                order: 'asc',
+                caseInsensitive: true,
+              },
+            },
+          ],
         },
       },
     ],
-  }
+  };
