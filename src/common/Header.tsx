@@ -32,9 +32,9 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 export const Header: React.FC = () => {
-  const { drawerWidth } = useAppContext();
+  const { drawerWidth, isDrawerOpen } = useAppContext();
   return (
-    <AppBar position="fixed" open={true} drawerWidth={drawerWidth}>
+    <AppBar position="fixed" open={isDrawerOpen} drawerWidth={drawerWidth}>
       <Toolbar>
         <IconButton
           color="inherit"
@@ -44,8 +44,7 @@ export const Header: React.FC = () => {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" noWrap component="div">
-        </Typography>
+        <Typography variant="h6" noWrap component="div"></Typography>
       </Toolbar>
     </AppBar>
   );
