@@ -3,9 +3,9 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import { styled } from '@mui/material/styles';
+import { ReactFC } from '@types';
 
 import { useAppContext } from '../context';
-import { ReactFC } from '../types';
 import { DrawerHeader } from './DrawerHeader';
 import { Header } from './Header';
 import { Sidebar } from './Sidebar';

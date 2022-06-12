@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { ReactFC } from '../types';
+import { ReactFC } from '@types';
+
 import { AppContextService, initialValue } from './service';
 
 export const AppContext: React.FC<ReactFC> = ({ children }) => {
