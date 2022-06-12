@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import MenuIcon from '@mui/icons-material/Menu';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import IconButton from '@mui/material/IconButton';
 import { styled } from '@mui/material/styles';
@@ -39,9 +40,9 @@ export const Header: React.FC = () => {
           aria-label="open drawer"
           onClick={toggleDrawerOpen}
           edge="start"
-          sx={{ mr: 2, ...(isDrawerOpen && { display: 'none' }) }}
+          sx={{ mr: 2 }}
         >
-          <MenuIcon />
+          {isDrawerOpen ? <ChevronLeftIcon /> : <ChevronRightIcon />}
         </IconButton>
         <Typography variant="h6" noWrap component="div"></Typography>
       </Toolbar>
