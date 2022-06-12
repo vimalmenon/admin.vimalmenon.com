@@ -14,9 +14,7 @@ interface AppBarProps extends MuiAppBarProps {
   drawerWidth: number;
 }
 
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})<AppBarProps>(({ theme, open, drawerWidth }) => ({
+const AppBar = styled(MuiAppBar)<AppBarProps>(({ theme, open, drawerWidth }) => ({
   transition: theme.transitions.create(['margin', 'width'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,

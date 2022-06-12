@@ -3,6 +3,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.tsx",
+  output: {
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "public"),
+  },
   devtool: "inline-source-map",
   mode: "development",
   module: {
@@ -14,9 +18,6 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    extensions: [".tsx", ".ts", ".js"],
-  },
   plugins: [
     new HtmlWebpackPlugin({
       title: "Application Title",
@@ -26,8 +27,7 @@ module.exports = {
       inject: true,
     }),
   ],
-  output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "public"),
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
   },
 };
