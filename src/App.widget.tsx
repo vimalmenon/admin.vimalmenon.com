@@ -1,18 +1,20 @@
 import * as React from 'react';
 
-import { Box } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
+import { Routes, Route } from 'react-router-dom';
 
 import { Layout } from './common/Layout';
+import { Home, Setting } from './pages';
 import { theme } from './theme';
 
 export const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <Layout>
-        <Box component="main" sx={{ width: '100%', flexGrow: 1, p: { xs: 2, sm: 3 } }}>
-          <div>This is App</div>
-        </Box>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/setting" element={<Setting />} />
+        </Routes>
       </Layout>
     </ThemeProvider>
   );
