@@ -6,8 +6,3 @@ terraform {
     encrypt = true
   }
 }
-
-#Action
-
-# Create S3 bucket
-# Make S3 public

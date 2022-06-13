@@ -1,2 +1,13 @@
-Upload the file from to S3 bucket.
 Need to work on authentication.
+
+
+Action for S3
+# Create S3 bucket
+# Make S3 public
+
+Action for Github Action
+# Create a validation script
+# Upload the file to S3 bucket
+
+Action for Lambda API
+# Create a Lambda API
