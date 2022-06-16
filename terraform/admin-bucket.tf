@@ -1,16 +1,16 @@
 resource "aws_s3_bucket" "admin_bucket" {
   bucket = "admin.vimalmenon.com"
-
   lifecycle {
     ignore_changes = [
-      grant
+      website
     ]
   }
 }
 
 resource "aws_s3_bucket_acl" "admin_bucket_acl" {
   bucket = aws_s3_bucket.admin_bucket.id
-  acl    = "private"
+  acl    = "public-read"
+
 }
 
 resource "aws_s3_bucket_versioning" "admin_bucket_version" {
@@ -20,6 +20,16 @@ resource "aws_s3_bucket_versioning" "admin_bucket_version" {
   }
 }
 
+resource "aws_s3_bucket_website_configuration" "admin_bucket_website" {
+  bucket = aws_s3_bucket.admin_bucket.id
+  index_document {
+    suffix = "index.html"
+  }
+  error_document {
+    key = "index.html"
+  }
+}
+
 output "Admin_S3_Bucket" {
-  value = aws_s3_bucket.admin_bucket
+  value = aws_s3_bucket.admin_bucket.bucket
 }
