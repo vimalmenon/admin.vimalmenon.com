@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/vimalmenon/admin.vimalmenon.com#readme",
   "devDependencies": {
-    "@types/react": "^18.0.12",
+    "@types/react": "^18.0.13",
     "@types/react-dom": "^18.0.5",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "eslint": "^8.17.0",
@@ -34,7 +34,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "html-webpack-plugin": "^5.5.0",
-    "prettier": "^2.7.0",
+    "prettier": "^2.7.1",
     "ts-loader": "^9.3.0",
     "typescript": "^4.7.3",
     "webpack": "^5.73.0",
