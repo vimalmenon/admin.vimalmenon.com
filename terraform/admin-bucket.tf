@@ -1,5 +1,9 @@
 resource "aws_s3_bucket" "admin_bucket" {
   bucket = "admin.vimalmenon.com"
+  tags = {
+    Name        = "admin.vimalmenon.com"
+    Environment = "Production"
+  }
   lifecycle {
     ignore_changes = [
       website
