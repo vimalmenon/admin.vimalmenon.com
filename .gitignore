@@ -3,3 +3,4 @@ node_modules/
 public/
 /terraform/.terraform
 /terraform/.terraform.lock.hcl
+/terraform/asset

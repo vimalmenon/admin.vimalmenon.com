@@ -1,0 +1,35 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      Release:
+        description: 'Select a release'
+        type: choice
+        required: true
+        default: 'Patch' 
+        options:
+          - Patch
+          - Minor
+          - Major
+      Region:
+        description: 'Select region'
+        type: choice
+        required: true
+        default: 'ap-southeast-1' 
+        options:
+          - ap-southeast-1
+          - ap-southeast-2
+          - us-east-1
+          - us-east-2
+          - us-west-1
+          - us-west-2
+
+env:
+  NODE_VERSION: 17.x
+  TF_VAR_region: 'us-east-1'
+  AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
