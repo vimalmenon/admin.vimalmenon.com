@@ -33,3 +33,22 @@ env:
   TF_VAR_region: 'us-east-1'
   AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
+
+jobs:
+  Validate:
+    name: Validate Terraform
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout 
+      uses: actions/checkout@v2
+    - name: Terraform
+      uses: hashicorp/setup-terraform@v1.3.2
+    - name: Init
+      working-directory: ./terraform
+      run: terraform init
+    - name: Format
+      working-directory: ./terraform
+      run: terraform fmt -check
+    - name: Validate
+      working-directory: ./terraform
+      run: terraform validate -no-color
