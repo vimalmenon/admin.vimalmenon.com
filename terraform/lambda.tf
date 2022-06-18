@@ -1,4 +1,7 @@
 locals {
+  api_methods = {
+    s3-bucket = "s3-bucket"
+  }
   apis = [
     {
       source        = "${path.module}/../api/s3-upload/upload.js"
@@ -17,6 +20,7 @@ locals {
       url           = "s3-bucket"
     }
   ]
+
 }
 data "archive_file" "upload" {
   count       = length(local.apis)
@@ -69,16 +73,16 @@ resource "aws_api_gateway_rest_api" "api_gateway" {
 }
 
 resource "aws_api_gateway_resource" "api_resource" {
-  count       = length(local.apis)
+  for_each    = local.api_methods
   rest_api_id = aws_api_gateway_rest_api.api_gateway.id
   parent_id   = aws_api_gateway_rest_api.api_gateway.root_resource_id
-  path_part   = local.apis[count.index].url
+  path_part   = each.value
 }
 
 resource "aws_api_gateway_method" "MyDemoMethod" {
-  count         = length(aws_api_gateway_resource.api_resource)
+  count         = length(local.apis)
   rest_api_id   = aws_api_gateway_rest_api.api_gateway.id
-  resource_id   = aws_api_gateway_resource.api_resource[count.index].id
+  resource_id   = aws_api_gateway_resource.api_resource[local.apis[count.index].url].id
   http_method   = local.apis[count.index].method
   authorization = "NONE"
 }
@@ -87,8 +91,11 @@ output "zip_file" {
   value = data.archive_file.upload
 }
 
-output "local_values" {
+output "local_api_values" {
   value = local.apis
+}
+output "local_methods_values" {
+  value = local.api_methods
 }
 
 output "lamda_methods" {
@@ -101,4 +108,8 @@ output "api_geteway_resource" {
 
 output "api_gateway_methods" {
   value = aws_api_gateway_method.MyDemoMethod
+}
+
+output "api_methods_test" {
+  value = aws_api_gateway_resource.api_resource["s3-bucket"]
 }
