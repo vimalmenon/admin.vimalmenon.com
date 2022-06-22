@@ -81,3 +81,6 @@ jobs:
         aws-access-key-id: ${{secrets.ACCESS_KEY}}
         aws-secret-access-key: ${{secrets.SECRET_KEY}}
         aws-region: ${{env.TF_VAR_region}}
+    - name: Upload to S3
+      run: |        
+        aws s3 cp ./public s3://admin.vimalmenon.com --recursive
