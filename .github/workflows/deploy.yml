@@ -33,6 +33,7 @@ env:
   TF_VAR_region: 'us-east-1'
   AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
+  S3_BUCKET: ${{secrets.S3_BUCKET}}
 
 jobs:
   Validate:
@@ -83,4 +84,4 @@ jobs:
         aws-region: ${{env.TF_VAR_region}}
     - name: Upload to S3
       run: |        
-        aws s3 cp ./public s3://admin.vimalmenon.com --recursive
+        aws s3 cp ./public ${{env.NODE_VERSION}} --recursive
