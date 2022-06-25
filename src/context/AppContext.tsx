@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { ReactFC } from '@types';
+import { ReactChildren } from '@types';
 
 import { AppContextService, initialValue } from './service';
 
-export const AppContext: React.FC<ReactFC> = ({ children }) => {
+export const AppContext: React.FC<ReactChildren> = ({ children }) => {
   const [isDrawerOpen, setDrawerOpen] = React.useState<boolean>(true);
   const toggleDrawerOpen = () => setDrawerOpen(!isDrawerOpen);
 
